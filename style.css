@@ -436,6 +436,8 @@ h2 span { font-family: 'DM Serif Display',Georgia,serif; font-style: italic; fon
 .contact-feedback { min-height: 0; margin: 14px 0 0; color: #8b3769; font-size: 12px; line-height: 1.65; }
 .contact-feedback:empty { display: none; }
 .contact-availability { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 27px auto 0; color: #817684; font-size: 12px; text-align: center; line-height: 1.6; }
+.contact-section .contact-feedback { max-width: none; color: #8b3769; font-size: 12px; }
+.contact-section .contact-availability { max-width: 790px; color: #817684; font-size: 12px; }
 .contact-availability .status-dot { flex: 0 0 8px; }
 .site-footer { background: #fffdfc; color: #5e5662; padding: 0; border-top: 1px solid #eee7eb; }
 .footer-main { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 70px; padding: 65px 0 60px; }
