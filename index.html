@@ -12,7 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261028-motion-1">
+  <link rel="stylesheet" href="style.css?v=20261029-search-1">
+  <link rel="stylesheet" href="search.css?v=20261029-search-1">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -29,17 +30,26 @@
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
-      <button class="menu-toggle command-trigger" type="button" aria-label="Open navigation and search" aria-controls="command-palette" aria-expanded="false" aria-keyshortcuts="Control+K Meta+K"><span aria-hidden="true">⌘</span><span class="menu-word"> Menu</span></button>
+      <button class="menu-toggle command-trigger" type="button" aria-label="Search portfolio and navigation" aria-controls="command-palette" aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="Control+K Meta+K"><span aria-hidden="true">⌕</span><span class="menu-word">Search</span></button>
     </div>
   </header>
-  <div class="command-overlay" id="command-palette" hidden>
-    <button type="button" class="command-backdrop" aria-label="Close navigation" data-close-palette></button>
-    <div class="command-panel" role="dialog" aria-modal="true" aria-labelledby="command-title">
+  <dialog class="command-overlay" id="command-palette" aria-labelledby="command-title">
+    <div class="command-panel">
+      <div class="search-heading"><div><p class="search-eyebrow">EXPLORE THE PORTFOLIO</p><h2 id="command-title">Find something good.</h2></div><button type="button" class="command-close" data-close-palette aria-label="Close search">Esc <span aria-hidden="true">✕</span></button></div>
       <div class="command-toolbar">
-        <label class="command-search"><span aria-hidden="true">⌕</span><input id="command-input" type="search" autocomplete="off" placeholder="Search pages, projects, skills..." aria-label="Search navigation"></label>
-        <button type="button" class="command-close" data-close-palette aria-label="Close navigation">Esc ✕</button>
+        <div class="command-search"><span aria-hidden="true">⌕</span><input id="command-input" type="search" autocomplete="off" spellcheck="false" maxlength="200" placeholder="Search projects, skills, experience…" aria-label="Search portfolio" aria-controls="search-results" aria-describedby="search-help" autofocus><button type="button" class="search-clear" id="search-clear" aria-label="Clear search text" hidden>✕</button></div>
       </div>
-      <p id="command-title" class="command-label">JUMP TO</p>
+      <div class="search-scopes" role="group" aria-label="Search in">
+        <button type="button" data-search-scope="All" aria-pressed="true">All</button>
+        <button type="button" data-search-scope="Projects" aria-pressed="false">Projects</button>
+        <button type="button" data-search-scope="Skills" aria-pressed="false">Skills</button>
+        <button type="button" data-search-scope="Experience" aria-pressed="false">Experience</button>
+      </div>
+      <p id="search-status" class="search-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div id="search-start">
+      <p class="command-label">SUGGESTED SEARCHES</p>
+      <div class="search-suggestions"><button type="button" data-search-query="offline">Offline access <span aria-hidden="true">↗</span></button><button type="button" data-search-query="Flutter">Flutter <span aria-hidden="true">↗</span></button><button type="button" data-search-query="notifications">Notifications <span aria-hidden="true">↗</span></button></div>
+      <p class="command-label">JUMP TO</p>
       <div class="command-grid">
         <a href="#home" data-quicklink="home introduction salman">⌂ <span>Home</span></a>
         <a href="#about" data-quicklink="about profile ahmedabad background">◉ <span>About me</span></a>
@@ -54,10 +64,12 @@
         <a href="https://www.linkedin.com/in/salmannaghori/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         <a href="mailto:salmannaghori@gmail.com">Email ↗</a>
       </div>
-      <p class="command-help">Tip: press <kbd>Ctrl</kbd> / <kbd>⌘</kbd> + <kbd>K</kbd> to open this menu anytime.</p>
-      <p class="command-empty" hidden>No matching section. Try “projects”, “Flutter” or “contact”.</p>
+      </div>
+      <div id="search-results" aria-label="Search results" hidden></div>
+      <div class="search-empty" id="search-empty" hidden><span class="search-empty-icon" aria-hidden="true">⌕</span><h3>No matches yet</h3><p id="search-empty-message"></p><button type="button" id="search-reset">Reset search</button></div>
+      <p class="command-help" id="search-help"><span><kbd>↑</kbd> <kbd>↓</kbd> move <kbd>↵</kbd> open <kbd>Esc</kbd> close</span><span><kbd>⌘</kbd> / <kbd>Ctrl</kbd> + <kbd>K</kbd></span></p>
     </div>
-  </div>
+  </dialog>
 
   <main id="main">
     <section class="hero cinematic-hero" id="home">
@@ -129,9 +141,9 @@
       <div class="container">
         <div class="section-heading"><div><p class="section-kicker">02 / Engineering impact</p><h2>Improvements beyond<br><span>the interface.</span></h2></div><p>Real implementation details from shipped client projects.</p></div>
         <div class="impact-grid">
-          <article class="impact-card"><span class="impact-icon">↯</span><span class="impact-label">PERFORMANCE</span><h3>350+ books, fewer repeat requests</h3><p>Designed an API-to-ObjectBox caching flow for HajiNaji, storing fetched book data locally and reusing records during subsequent reading sessions.</p><span class="impact-tech">ObjectBox · REST APIs · Offline access</span></article>
-          <article class="impact-card"><span class="impact-icon">↗</span><span class="impact-label">BACKGROUND WORKFLOWS</span><h3>Keep the app usable during imports</h3><p>Moved TREX social-content imports out of a blocking loading state, allowing navigation while backend processing continues, with start and result notifications.</p><span class="impact-tech">Cubit · Push notifications · Media uploads</span></article>
-          <article class="impact-card"><span class="impact-icon">✳</span><span class="impact-label">DELIVERY &amp; QUALITY</span><h3>Features through production release</h3><p>Worked across development, integrations, testing, crash monitoring and Android/iOS store releases — supporting applications after they ship.</p><span class="impact-tech">Flutter testing · Firebase Crashlytics · Stores</span></article>
+          <article class="impact-card" id="impact-caching" data-search-item="Experience"><span class="impact-icon">↯</span><span class="impact-label">PERFORMANCE</span><h3>350+ books, fewer repeat requests</h3><p>Designed an API-to-ObjectBox caching flow for HajiNaji, storing fetched book data locally and reusing records during subsequent reading sessions.</p><span class="impact-tech">ObjectBox · REST APIs · Offline access</span></article>
+          <article class="impact-card" id="impact-imports" data-search-item="Experience"><span class="impact-icon">↗</span><span class="impact-label">BACKGROUND WORKFLOWS</span><h3>Keep the app usable during imports</h3><p>Moved TREX social-content imports out of a blocking loading state, allowing navigation while backend processing continues, with start and result notifications.</p><span class="impact-tech">Cubit · Push notifications · Media uploads</span></article>
+          <article class="impact-card" id="impact-release" data-search-item="Experience"><span class="impact-icon">✳</span><span class="impact-label">DELIVERY &amp; QUALITY</span><h3>Features through production release</h3><p>Worked across development, integrations, testing, crash monitoring and Android/iOS store releases — supporting applications after they ship.</p><span class="impact-tech">Flutter testing · Firebase Crashlytics · Stores</span></article>
         </div>
       </div>
     </section>
@@ -159,7 +171,7 @@
       <div class="container">
         <div class="section-heading"><div><p class="section-kicker">04 / Selected projects</p><h2>Products shipped.<br><span>Engineering explained.</span></h2></div><p>Technical contributions across real client products and multiple industries.</p></div>
         <div class="project-grid">
-          <article class="project-card featured" data-tilt>
+          <article id="project-trex" data-search-item="Projects" class="project-card featured" data-tilt>
             <div class="project-top"><span class="project-index">CASE STUDY / 01</span><span class="project-type">Travel &amp; content</span></div>
             <div class="project-art art-trex"><span class="art-label">TREX</span><span class="art-orbit"></span><span class="art-caption">Asynchronous imports · Push notifications</span><div class="phone-mockup trex-ui" aria-hidden="true"><div class="mock-top"><span>9:41</span><span>●●●</span></div><div class="mock-title">Discover</div><div class="mock-hero-photo"><span>Explore more ✦</span></div><div class="mock-row"><i></i><span>Travel inspiration<br><small>Media import complete ✓</small></span></div><div class="mock-bottom">⌂ &nbsp; ♡ &nbsp; ⊕ &nbsp; ◉</div></div><span class="concept-label">Illustrative UI</span></div>
             <div class="project-body">
@@ -171,7 +183,7 @@
               <div class="project-links"><a href="https://play.google.com/store/apps/details?id=com.trexapp&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="TREX on Google Play">Google Play ↗</a><a href="https://apps.apple.com/dz/app/trex-trusted-recommendations/id6756966689" target="_blank" rel="noopener noreferrer" aria-label="TREX on the App Store">App Store ↗</a></div>
             </div>
           </article>
-          <article class="project-card featured" data-tilt>
+          <article id="project-hajinaji" data-search-item="Projects" class="project-card featured" data-tilt>
             <div class="project-top"><span class="project-index">CASE STUDY / 02</span><span class="project-type">Digital library</span></div>
             <div class="project-art art-haji"><span class="art-label">HajiNaji</span><span class="art-book art-book-one"></span><span class="art-book art-book-two"></span><span class="art-caption">350+ books · ObjectBox caching</span><div class="phone-mockup reader-ui" aria-hidden="true"><div class="mock-top"><span>9:41</span><span>●●●</span></div><div class="mock-title">My Library</div><div class="mock-book-cover">READ<br><em>with ease</em></div><div class="mock-row"><i></i><span>Continue reading<br><small>Available offline ✓</small></span></div><div class="mock-bottom">⌂ &nbsp; ▤ &nbsp; ♡ &nbsp; ◉</div></div><span class="concept-label">Illustrative UI</span></div>
             <div class="project-body">
@@ -183,25 +195,25 @@
               <div class="project-links"><a href="https://play.google.com/store/apps/details?id=com.hajinajiapp&amp;hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="HajiNaji on Google Play">Google Play ↗</a><a href="https://apps.apple.com/in/app/hajinaji-library/id876842889" target="_blank" rel="noopener noreferrer" aria-label="HajiNaji on the App Store">App Store ↗</a></div>
             </div>
           </article>
-          <article class="project-card">
+          <article id="project-crackit" data-search-item="Projects" class="project-card">
             <div class="project-top"><span class="project-index">PROJECT / 03</span><span class="project-type">Exam preparation</span></div>
             <div class="project-body"><div class="project-glyph">◎</div><h3>CrackIt</h3><p>Built learning and assessment features including practice tests, user progress tracking, subscription access and engagement notifications.</p><div class="tags"><span>Flutter</span><span>BLoC</span><span>Firebase</span><span>In-app purchases</span></div>
               <div class="project-links"><a href="https://play.google.com/store/apps/details?id=com.crackit.app&amp;hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="CrackIt on Google Play">Google Play ↗</a><a href="https://apps.apple.com/ph/app/crackit-app/id6752026594" target="_blank" rel="noopener noreferrer" aria-label="CrackIt on the App Store">App Store ↗</a></div>
             </div>
           </article>
-          <article class="project-card">
+          <article id="project-imin" data-search-item="Projects" class="project-card">
             <div class="project-top"><span class="project-index">PROJECT / 04</span><span class="project-type">Real-time social</span></div>
             <div class="project-body"><div class="project-glyph">✳</div><h3>imin — Activity Discovery</h3><p>Delivered discovery, real-time chat, map search, interest-based recommendations and event analytics for a social activity platform.</p><div class="tags"><span>Flutter</span><span>Socket.IO</span><span>Google Maps</span><span>Mixpanel</span></div>
               <div class="project-links"><a href="https://play.google.com/store/apps/details?id=com.iminapp&amp;hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="imin on Google Play">Google Play ↗</a><a href="https://apps.apple.com/it/app/imin-irl-activities-friends/id6738836349?l=en-GB" target="_blank" rel="noopener noreferrer" aria-label="imin on the App Store">App Store ↗</a></div>
             </div>
           </article>
-          <article class="project-card">
+          <article id="project-norsemap" data-search-item="Projects" class="project-card">
             <div class="project-top"><span class="project-index">PROJECT / 05</span><span class="project-type">Maps &amp; heritage</span></div>
             <div class="project-body"><div class="project-glyph">⌖</div><h3>NorseMap / iViking</h3><p>Developed heritage discovery features including geolocation, map-based navigation, photo submissions and push notifications for a European research initiative.</p><div class="tags"><span>Flutter</span><span>Clean Architecture</span><span>Maps</span><span>Firebase</span></div>
               <div class="project-links"><a href="https://play.google.com/store/apps/details?id=com.iviking.app&amp;hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="iViking on Google Play">Google Play ↗</a><a href="https://apps.apple.com/au/app/iviking/id6760638469" target="_blank" rel="noopener noreferrer" aria-label="iViking on the App Store">App Store ↗</a></div>
             </div>
           </article>
-          <article class="project-card">
+          <article id="project-educational-ereader" data-search-item="Projects" class="project-card">
             <div class="project-top"><span class="project-index">PROJECT / 06</span><span class="project-type">Digital learning</span></div>
             <div class="project-body"><div class="project-glyph">▣</div><h3>Educational eReader</h3><p>Built cross-platform reading features covering offline book downloads, PDF rendering, rich-text editing, text-to-speech and crash monitoring.</p><div class="tags"><span>Flutter</span><span>BLoC</span><span>Hive</span><span>Dio</span><span>PDF</span></div><div class="project-private">Client application · Cross-platform delivery</div>
             </div>
@@ -210,9 +222,9 @@
         <div class="more-projects">
           <div class="more-projects-heading"><div><span class="section-kicker">MORE PRODUCTION WORK</span><h3>Additional applications</h3></div><p>Broader experience across social, healthcare and retail products.</p></div>
           <div class="more-project-grid">
-            <article><div><strong>ICE2HOT</strong><span>Social discovery &amp; calling</span></div><a href="https://play.google.com/store/apps/details?id=com.icebreakrr.classic&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">View app ↗</a></article>
-            <article><div><strong>Hexia</strong><span>Healthcare &amp; consultations</span></div><a href="https://play.google.com/store/apps/details?id=com.hexia" target="_blank" rel="noopener noreferrer">View app ↗</a></article>
-            <article><div><strong>Shareclub</strong><span>Customer &amp; outlet applications</span></div><a href="https://play.google.com/store/apps/details?id=com.shareclube.user&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">View app ↗</a></article>
+            <article id="project-ice2hot" data-search-item="Projects"><div><strong>ICE2HOT</strong><span>Social discovery &amp; calling</span></div><a href="https://play.google.com/store/apps/details?id=com.icebreakrr.classic&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">View app ↗</a></article>
+            <article id="project-hexia" data-search-item="Projects"><div><strong>Hexia</strong><span>Healthcare &amp; consultations</span></div><a href="https://play.google.com/store/apps/details?id=com.hexia" target="_blank" rel="noopener noreferrer">View app ↗</a></article>
+            <article id="project-shareclub" data-search-item="Projects"><div><strong>Shareclub</strong><span>Customer &amp; outlet applications</span></div><a href="https://play.google.com/store/apps/details?id=com.shareclube.user&amp;hl=en_IN" target="_blank" rel="noopener noreferrer">View app ↗</a></article>
           </div>
         </div>
         <p class="project-footnote">Project work reflects my contributions within development teams. Store availability may vary by region.</p>
@@ -238,12 +250,12 @@
         </div>
         <p class="skills-detail-kicker">HOW I APPLY THEM IN PRODUCTION</p>
         <div class="skills-grid">
-          <div class="skill-group"><div class="skill-head"><span class="skill-icon">01</span><span class="skill-category">APP DEVELOPMENT</span></div><h3>Flutter &amp; Platforms</h3><div class="skill-chip-list"><span>Flutter</span><span>Dart</span><span>Material 3</span><span>Responsive UI</span><span>Android</span><span>iOS</span><span>Windows</span></div></div>
-          <div class="skill-group"><div class="skill-head"><span class="skill-icon">02</span><span class="skill-category">MAINTAINABILITY</span></div><h3>Architecture &amp; State</h3><div class="skill-chip-list"><span>BLoC</span><span>Cubit</span><span>Provider</span><span>Clean Architecture</span><span>GetIt</span><span>Dependency Injection</span></div></div>
-          <div class="skill-group"><div class="skill-head"><span class="skill-icon">03</span><span class="skill-category">CONNECTIVITY</span></div><h3>APIs &amp; Real-time</h3><div class="skill-chip-list"><span>REST APIs</span><span>Dio</span><span>JSON</span><span>Socket.IO</span><span>Node.js / PHP APIs</span><span>Error Handling</span></div></div>
-          <div class="skill-group"><div class="skill-head"><span class="skill-icon">04</span><span class="skill-category">BACKEND SERVICES</span></div><h3>Firebase &amp; Integrations</h3><div class="skill-chip-list"><span>Firebase Auth</span><span>FCM</span><span>Crashlytics</span><span>Analytics</span><span>Google / Apple Sign-In</span><span>Twilio</span><span>AWS S3</span></div></div>
-          <div class="skill-group"><div class="skill-head"><span class="skill-icon">05</span><span class="skill-category">PRODUCT FEATURES</span></div><h3>Data &amp; Device Features</h3><div class="skill-chip-list"><span>ObjectBox</span><span>Hive</span><span>SharedPreferences</span><span>Offline Caching</span><span>Google Maps</span><span>Geolocation</span><span>Stripe</span><span>In-App Purchases</span><span>PDF</span></div></div>
-          <div class="skill-group"><div class="skill-head"><span class="skill-icon">06</span><span class="skill-category">PRODUCTION READINESS</span></div><h3>Testing &amp; Delivery</h3><div class="skill-chip-list"><span>Flutter Testing</span><span>Debugging</span><span>Git / GitHub</span><span>Android Studio</span><span>Google Play Console</span><span>App Store Deployment</span></div></div>
+          <div class="skill-group" id="skill-platforms" data-search-item="Skills"><div class="skill-head"><span class="skill-icon">01</span><span class="skill-category">APP DEVELOPMENT</span></div><h3>Flutter &amp; Platforms</h3><div class="skill-chip-list"><span>Flutter</span><span>Dart</span><span>Material 3</span><span>Responsive UI</span><span>Android</span><span>iOS</span><span>Windows</span></div></div>
+          <div class="skill-group" id="skill-architecture" data-search-item="Skills"><div class="skill-head"><span class="skill-icon">02</span><span class="skill-category">MAINTAINABILITY</span></div><h3>Architecture &amp; State</h3><div class="skill-chip-list"><span>BLoC</span><span>Cubit</span><span>Provider</span><span>Clean Architecture</span><span>GetIt</span><span>Dependency Injection</span></div></div>
+          <div class="skill-group" id="skill-apis" data-search-item="Skills"><div class="skill-head"><span class="skill-icon">03</span><span class="skill-category">CONNECTIVITY</span></div><h3>APIs &amp; Real-time</h3><div class="skill-chip-list"><span>REST APIs</span><span>Dio</span><span>JSON</span><span>Socket.IO</span><span>Node.js / PHP APIs</span><span>Error Handling</span></div></div>
+          <div class="skill-group" id="skill-firebase" data-search-item="Skills"><div class="skill-head"><span class="skill-icon">04</span><span class="skill-category">BACKEND SERVICES</span></div><h3>Firebase &amp; Integrations</h3><div class="skill-chip-list"><span>Firebase Auth</span><span>FCM</span><span>Crashlytics</span><span>Analytics</span><span>Google / Apple Sign-In</span><span>Twilio</span><span>AWS S3</span></div></div>
+          <div class="skill-group" id="skill-data" data-search-item="Skills"><div class="skill-head"><span class="skill-icon">05</span><span class="skill-category">PRODUCT FEATURES</span></div><h3>Data &amp; Device Features</h3><div class="skill-chip-list"><span>ObjectBox</span><span>Hive</span><span>SharedPreferences</span><span>Offline Caching</span><span>Google Maps</span><span>Geolocation</span><span>Stripe</span><span>In-App Purchases</span><span>PDF</span></div></div>
+          <div class="skill-group" id="skill-delivery" data-search-item="Skills"><div class="skill-head"><span class="skill-icon">06</span><span class="skill-category">PRODUCTION READINESS</span></div><h3>Testing &amp; Delivery</h3><div class="skill-chip-list"><span>Flutter Testing</span><span>Debugging</span><span>Git / GitHub</span><span>Android Studio</span><span>Google Play Console</span><span>App Store Deployment</span></div></div>
         </div>
         <div class="delivery-strip"><div><span class="delivery-number">01</span><strong>Plan &amp; architect</strong><small>Structure features for maintainability</small></div><div><span class="delivery-number">02</span><strong>Build &amp; integrate</strong><small>UI, state, APIs and local data</small></div><div><span class="delivery-number">03</span><strong>Test &amp; improve</strong><small>Debug, monitor and optimize</small></div><div><span class="delivery-number">04</span><strong>Release &amp; support</strong><small>Android and iOS store workflows</small></div></div>
       </div>
@@ -309,6 +321,8 @@
     </div>
     <div class="container footer-bottom"><span>© 2026 Salman Naghori. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
   </footer>
-  <script src="script.js?v=20261028-motion-1"></script>
+  <script src="script.js?v=20261029-search-1"></script>
+  <script src="search-core.js?v=20261029-search-1"></script>
+  <script src="search.js?v=20261029-search-1"></script>
 </body>
 </html>
