@@ -1,0 +1,19 @@
+{
+    "mcpServers": {
+        "dart-mcp-server": {
+            "command": "dart",
+            "args": [
+                "mcp-server"
+            ]
+        },
+        "rea": {
+            "command": "/opt/homebrew/bin/rea",
+            "args": [
+                "mcp"
+            ],
+            "env": {
+                "HOPPER_LAUNCHER_PATH": "/Applications/Hopper Disassembler.app/Contents/MacOS/hopper"
+            }
+        }
+    }
+}

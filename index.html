@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20261029-search-1">
   <link rel="stylesheet" href="search.css?v=20261029-search-1">
+  <link rel="stylesheet" href="wall.css?v=20261029-1">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -28,6 +29,7 @@
         <a href="#experience">Experience</a>
         <a href="#work">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#wall">The Wall</a>
         <a href="#contact">Contact</a>
       </nav>
       <button class="menu-toggle command-trigger" type="button" aria-label="Search portfolio and navigation" aria-controls="command-palette" aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="Control+K Meta+K"><span aria-hidden="true">⌕</span><span class="menu-word">Search</span></button>
@@ -56,6 +58,7 @@
         <a href="#experience" data-quicklink="experience work impero employment">⌁ <span>Experience</span></a>
         <a href="#work" data-quicklink="projects trex hajinaji crackit imin iviking apps">▦ <span>Projects</span></a>
         <a href="#skills" data-quicklink="skills flutter dart firebase bloc objectbox tools">✦ <span>Skills</span></a>
+        <a href="#wall" data-quicklink="wall guestbook notes drawing export visitor">⚑ <span>The Wall</span></a>
         <a href="#contact" data-quicklink="contact email message recruiter hire">✉ <span>Contact</span></a>
       </div>
       <p class="command-label">CONNECT</p>
@@ -261,10 +264,35 @@
       </div>
     </section>
 
+    <section class="section wall-section" id="wall">
+      <div class="container">
+        <div class="editorial-heading reveal">
+          <p class="section-kicker">06 / The Wall</p>
+          <h2>Words Left <em>on the Wall.</em></h2>
+          <span class="heading-stroke"></span>
+        </div>
+        <div class="wall-header-wrap">
+          <p class="hero-description" style="margin: 0; max-width: 680px;">A digital guestbook for visitors, collaborators, and developers to pin notes and drawings. Leave your mark or export the wall to CSV.</p>
+          <div class="wall-header-controls">
+            <div class="wall-actions">
+              <button class="button button-primary" type="button" id="wall-drop-btn">Drop a note ✎</button>
+              <button class="button button-outline" type="button" id="wall-export-btn">Export notes (CSV) ↓</button>
+            </div>
+            <div class="wall-count-badge" id="wall-count-badge">
+              <span class="status-dot"></span><span>Loading notes…</span>
+            </div>
+          </div>
+        </div>
+        <div class="wall-grid" id="wall-grid">
+          <!-- Dynamically populated wall notes -->
+        </div>
+      </div>
+    </section>
+
     <section class="section contact-section" id="contact">
       <div class="container contact-container">
         <div class="contact-heading">
-          <p class="section-kicker">06 / Get in touch</p>
+          <p class="section-kicker">07 / Get in touch</p>
           <h2>LET'S <em>Connect.</em></h2>
           <p>OPEN TO FLUTTER ROLES, COLLABORATIONS &amp; GREAT CONVERSATIONS</p>
           <div class="social-bubbles" aria-label="Contact and social profiles">
@@ -312,11 +340,49 @@
         <p class="contact-availability"><span class="status-dot"></span> Available to discuss Flutter Developer opportunities in Ahmedabad, remotely or with relocation.</p>
       </div>
     </section>
+
+    <dialog class="wall-dialog" id="wall-dialog" aria-labelledby="wall-modal-title">
+      <div class="wall-modal-content">
+        <div class="wall-modal-header">
+          <h3 id="wall-modal-title">Leave a mark on the wall</h3>
+          <button type="button" class="wall-modal-close" id="wall-modal-close" aria-label="Close modal">✕</button>
+        </div>
+        <form class="wall-form" id="wall-form">
+          <div class="wall-form-field">
+            <label class="wall-form-label" for="wall-name-input">Your Name *</label>
+            <input class="wall-input" id="wall-name-input" type="text" placeholder="e.g. Alex Rivera" maxlength="60" required>
+          </div>
+          <div class="wall-form-field">
+            <div class="wall-form-label">
+              <label for="wall-msg-input">Message</label>
+              <span class="wall-char-count" id="wall-char-count">0 / 200</span>
+            </div>
+            <textarea class="wall-textarea" id="wall-msg-input" rows="3" placeholder="Write something nice, feedback, or a friendly note..." maxlength="200"></textarea>
+          </div>
+          <div class="wall-form-field">
+            <span class="wall-form-label">Note Color</span>
+            <div class="wall-color-picker" id="wall-color-picker" role="radiogroup" aria-label="Choose note color"></div>
+          </div>
+          <div class="wall-form-field">
+            <span class="wall-form-label">Optional Drawing</span>
+            <div class="wall-canvas-container">
+              <canvas id="wall-canvas" width="480" height="200"></canvas>
+              <div class="wall-canvas-tools">
+                <button type="button" class="wall-btn-sm" id="wall-canvas-undo">Undo</button>
+                <button type="button" class="wall-btn-sm" id="wall-canvas-clear">Clear</button>
+              </div>
+            </div>
+          </div>
+          <button class="button button-primary wall-form-submit" type="submit">Pin note to Wall 📌</button>
+        </form>
+      </div>
+    </dialog>
+    <div class="wall-toast" id="wall-toast" role="status" aria-live="polite"></div>
   </main>
   <footer class="site-footer">
     <div class="container footer-main">
       <div class="footer-intro"><span class="footer-monogram">SN<span>.</span></span><p>Flutter Developer building thoughtful mobile experiences from architecture to release.</p></div>
-      <div class="footer-column"><strong>EXPLORE</strong><a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Projects</a><a href="#skills">Expertise</a></div>
+      <div class="footer-column"><strong>EXPLORE</strong><a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Projects</a><a href="#skills">Expertise</a><a href="#wall">The Wall</a></div>
       <div class="footer-column"><strong>CONNECT</strong><a href="mailto:salmannaghori@gmail.com">Email</a><a href="https://www.linkedin.com/in/salmannaghori/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/SalmanNaghori" target="_blank" rel="noopener noreferrer">GitHub</a></div>
     </div>
     <div class="container footer-bottom"><span>© 2026 Salman Naghori. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
@@ -324,5 +390,7 @@
   <script src="script.js?v=20261029-search-1"></script>
   <script src="search-core.js?v=20261029-search-1"></script>
   <script src="search.js?v=20261029-search-1"></script>
+  <script src="wall-core.js?v=20261029-1"></script>
+  <script src="wall.js?v=20261029-1"></script>
 </body>
 </html>

@@ -28,6 +28,7 @@
     { id: 'experience', title: 'Professional experience', category: 'Experience', metadata: 'Impero IT Services · Flutter Developer', body: textFrom(document.querySelector('#experience'), '.experience-meta, .experience-body li') },
     { id: 'work', title: 'Projects', category: 'Pages', metadata: 'Selected work · Case studies', body: textFrom(document.querySelector('#work'), '.section-heading h2, .section-heading p') },
     { id: 'skills', title: 'Skills', category: 'Pages', metadata: 'Technical expertise · Tools', body: textFrom(document.querySelector('#skills'), '.section-heading p, .tool-tile strong, .delivery-strip strong, .delivery-strip small') },
+    { id: 'wall', title: 'The Wall', category: 'Pages', metadata: 'Visitor guestbook · Sticky notes · Drawings · CSV export', body: textFrom(document.querySelector('#wall'), '.hero-description, h2') || 'A digital guestbook for visitors, collaborators, and developers to pin notes and drawings. Leave your mark or export the wall to CSV.' },
     { id: 'contact', title: 'Contact', category: 'Pages', metadata: 'Email · LinkedIn · GitHub · Hire', body: textFrom(document.querySelector('#contact'), '.contact-heading p, .contact-availability, .direct-contact-options strong') }
   ];
   document.querySelectorAll('[data-search-item]').forEach(element => {
