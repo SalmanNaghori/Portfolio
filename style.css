@@ -290,6 +290,7 @@ h2 span { color: #8775a4; }
   --purple: #a44379;
   --radius: 21px;
 }
+html, body { overflow-x: clip; }
 body { background: #fffdfc; }
 button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #e884ad; outline-offset: 3px; }
 ::selection { background: #f8a8c8; color: #251c2a; }
