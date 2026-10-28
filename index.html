@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#171138">
+  <meta name="theme-color" content="#fffdfc">
   <meta name="description" content="Salman Naghori is a Flutter Developer with 3.6+ years of experience, 9+ production apps and 50+ API integrations. Explore real Flutter case studies, architecture, performance optimization and store releases.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Salman Naghori | Flutter Developer">
@@ -11,8 +11,8 @@
   <title>Salman Naghori | Flutter Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261028-portfolio">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261028-editorial">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -68,6 +68,7 @@
         </div>
       </div>
     </section>
+    <div class="expertise-ribbon" aria-hidden="true"><div>FLUTTER DEVELOPMENT <span>✳</span> MOBILE ARCHITECTURE <span>✳</span> PRODUCTION APPS <span>✳</span> PERFORMANCE OPTIMIZATION <span>✳</span> API INTEGRATION <span>✳</span> FLUTTER DEVELOPMENT <span>✳</span> MOBILE ARCHITECTURE <span>✳</span></div></div>
 
     <section class="section section-light" id="about">
       <div class="container about-grid">
@@ -190,10 +191,52 @@
     </section>
 
     <section class="section contact-section" id="contact">
-      <div class="container contact-grid"><div><p class="section-kicker">06 / Contact</p><h2>Have a Flutter role<br>in mind? <em>Let's talk.</em></h2><p>I'm interested in opportunities where I can contribute to reliable, well-designed mobile products.</p></div><div class="contact-links"><a href="mailto:salmannaghori@gmail.com"><span>Email me</span><strong>salmannaghori@gmail.com</strong><span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/salmannaghori/" target="_blank" rel="noopener noreferrer"><span>Connect</span><strong>LinkedIn</strong><span aria-hidden="true">↗</span></a><a href="https://github.com/SalmanNaghori" target="_blank" rel="noopener noreferrer"><span>Explore code</span><strong>GitHub</strong><span aria-hidden="true">↗</span></a></div></div>
+      <div class="container contact-container">
+        <div class="contact-heading">
+          <p class="section-kicker">06 / Get in touch</p>
+          <h2>LET'S <em>Connect.</em></h2>
+          <p>OPEN TO FLUTTER ROLES, COLLABORATIONS &amp; GREAT CONVERSATIONS</p>
+          <div class="social-bubbles" aria-label="Contact and social profiles">
+            <a href="mailto:salmannaghori@gmail.com" aria-label="Email Salman" title="Email">@</a>
+            <a href="https://www.linkedin.com/in/salmannaghori/" target="_blank" rel="noopener noreferrer" aria-label="Salman on LinkedIn" title="LinkedIn">in</a>
+            <a href="https://github.com/SalmanNaghori" target="_blank" rel="noopener noreferrer" aria-label="Salman on GitHub" title="GitHub">gh</a>
+          </div>
+          <div class="contact-methods">
+            <a class="method-active" href="#contact-form">Send a message <span aria-hidden="true">↘</span></a>
+            <a href="mailto:salmannaghori@gmail.com">Email directly <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form" action="mailto:salmannaghori@gmail.com" method="post" enctype="text/plain">
+          <div class="form-row">
+            <label class="form-field" for="sender-name"><span>NAME</span><input id="sender-name" name="name" type="text" autocomplete="name" placeholder="Your name" maxlength="100" required></label>
+            <label class="form-field" for="sender-email"><span>EMAIL</span><input id="sender-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="150" required></label>
+          </div>
+          <fieldset class="topic-field">
+            <legend>WHAT'S THIS ABOUT?</legend>
+            <div class="topic-options">
+              <label><input type="radio" name="topic" value="Flutter Developer opportunity" checked><span>Flutter role</span></label>
+              <label><input type="radio" name="topic" value="Remote opportunity"><span>Remote opportunity</span></label>
+              <label><input type="radio" name="topic" value="Project collaboration"><span>Collaboration</span></label>
+              <label><input type="radio" name="topic" value="Just saying hello"><span>Just saying hi</span></label>
+            </div>
+          </fieldset>
+          <label class="form-field message-field" for="sender-message"><span>MESSAGE</span><textarea id="sender-message" name="message" rows="5" maxlength="3000" placeholder="Tell me about the role, project, or idea..." required></textarea></label>
+          <p class="form-notice">This prepares a message in your email app. Nothing is submitted or stored by this website.</p>
+          <button class="contact-submit" type="submit">Prepare email message <span aria-hidden="true">↗</span></button>
+          <p class="contact-feedback" id="contact-feedback" role="status" aria-live="polite"></p>
+        </form>
+        <p class="contact-availability"><span class="status-dot"></span> Available to discuss Flutter Developer opportunities in Ahmedabad, remotely or with relocation.</p>
+      </div>
     </section>
   </main>
-  <footer class="site-footer"><div class="container footer-grid"><span>© 2026 Salman Naghori</span><span>Built with care, for the next opportunity.</span><a href="#home">Back to top ↑</a></div></footer>
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-intro"><span class="footer-monogram">SN<span>.</span></span><p>Flutter Developer building thoughtful mobile experiences from architecture to release.</p></div>
+      <div class="footer-column"><strong>EXPLORE</strong><a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Projects</a><a href="#skills">Expertise</a></div>
+      <div class="footer-column"><strong>CONNECT</strong><a href="mailto:salmannaghori@gmail.com">Email</a><a href="https://www.linkedin.com/in/salmannaghori/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/SalmanNaghori" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Salman Naghori. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
